@@ -1,0 +1,29 @@
+[
+	{
+		"id": 1,
+		"title": "play 1",
+		"description": "la mejor consola",
+		"price": 1000,
+		"thumbnail": "img.jpg",
+		"code": 123,
+		"stock": 20
+	},
+	{
+		"id": 2,
+		"title": "play 2",
+		"description": "la mejor consola",
+		"price": 1000,
+		"thumbnail": "img.jpg",
+		"code": 123,
+		"stock": 20
+	},
+	{
+		"id": 3,
+		"title": "play 3",
+		"description": "la mejor consola",
+		"price": 1000,
+		"thumbnail": "img.jpg",
+		"code": 123,
+		"stock": 20
+	}
+]
