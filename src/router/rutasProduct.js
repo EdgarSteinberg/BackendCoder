@@ -4,8 +4,17 @@ import ProductManager from "../productManager.js"
 const Productrouter = Router();
 const Manager = new ProductManager("./src/producto.json");
 
-Productrouter.get("/", async (req, res) => {
+/* Productrouter.get("/", async (req, res) => {
     res.send(await Manager.getProducts());
+}); */
+Productrouter.get("/", async (req, res) => {
+    let products = await Manager.getProducts();
+    const {limit} = req.query;
+
+    if(limit){
+    products  = products.slice(0, limit)
+    }
+    res.send(products);
 });
 
 Productrouter.post("/", async (req, res) => {
@@ -24,8 +33,8 @@ Productrouter.delete("/:pid", async (req, res) => {
 });
 // Obtener un producto específico por su ID
 
-Productrouter.get("/:id", async (req, res) => {
-    const productId = parseInt(req.params.id);
+Productrouter.get("/:pid", async (req, res) => {
+    const productId = parseInt(req.params.pid);
     const productAll = await Manager.getProducts();
     
     const product = productAll.find(prod => prod.id === productId);
@@ -35,5 +44,7 @@ Productrouter.get("/:id", async (req, res) => {
         res.status(404).send("Producto no encontrado");
     }
 });
+
+
 export default Productrouter;
 

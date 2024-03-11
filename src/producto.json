@@ -25,5 +25,23 @@
 		"thumbnail": "img.jpg",
 		"code": 123,
 		"stock": 20
+	},
+	{
+		"id": 4,
+		"title": "play 14",
+		"description": "play 4",
+		"price": 7000000,
+		"thumbnail": "img473",
+		"code": 123456,
+		"stock": 7100
+	},
+	{
+		"id": 5,
+		"title": "play 5",
+		"description": "la mejor consola",
+		"price": 1000,
+		"thumbnail": "img.jpg",
+		"code": 123,
+		"stock": 20
 	}
 ]

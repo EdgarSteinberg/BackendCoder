@@ -34,13 +34,5 @@ CartRouter.post("/:cid/products/:pid", async (req, res) => {
         
         res.send(await carts.addProductInCart(cartId, productId));
 }) 
-//aca tal vez falta crear una variable q contenga let carts = await this.getCarts()
 
-// CartRouter.post("/:cid/products/:pid", async (req, res) => {
-//     let cartId = req.params.cid;
-//     let productId = req.params.pid;
-//     //res.send(await carts.addProductToCart(cartId, productId))
-//     const resultMessage = await carts.addProductToCart(cartId, productId);
-//     res.send(resultMessage);
-// })
 export default CartRouter
