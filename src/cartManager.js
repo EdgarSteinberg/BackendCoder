@@ -15,7 +15,6 @@ class CartManager {
         if (carts.length > 0) {
             return parseInt(carts[carts.length - 1].id + 1);
         }
-
         return 1;
     }
 
@@ -49,40 +48,39 @@ class CartManager {
         }
     }
 
-
     async addProductInCart(cartId, productId) {
         let carts = await this.getCarts();
         let products = await productAll.getProducts();
-    
+
         cartId = parseInt(cartId);
         productId = parseInt(productId);
-    
+
         const cart = carts.find(cart => cart.id === cartId);
         if (!cart) return "Carrito no encontrado";
-    
+
         const product = products.find(prod => prod.id === productId);
         if (!product) return "Producto no encontrado";
-    
+
         // Buscar si el producto ya existe en el carrito
-        const productInCartIndex = cart.products.findIndex(prod => prod.id === productId);
-        if (productInCartIndex !== -1) {
+        const productInCart = cart.products.find(prod => prod.id === productId);
+        if (productInCart) {
             // Si el producto ya existe, aumentar la cantidad
-            cart.products[productInCartIndex].cantidad += 1;
+            productInCart.cantidad += 1;
         } else {
             // Si el producto no existe, agregarlo al carrito con cantidad 1
             cart.products.push({ id: productId, cantidad: 1 });
         }
-    
+
         try {
             // Escribir los cambios en el archivo
             await fs.promises.writeFile(this.path, JSON.stringify(carts, null, "\t"));
             return "Producto sumado al carrito";
-    
+
         } catch (e) {
             return ("Error al sumar el producto al carrito", e);
         }
     }
-    
+
 }
 
 

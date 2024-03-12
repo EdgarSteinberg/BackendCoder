@@ -15,9 +15,8 @@ class ProductManager {
 
         return 1;
     }
-
-    //Recibimos el producto o lo creamos
-    async addProduct(producto) {
+    //Recibimos el producto y creamos
+    async addProduct(producto,thumbnail) {
         const productos = await this.getProducts();
 
         const product = {
@@ -25,7 +24,7 @@ class ProductManager {
             title: producto.title ?? "Sin titulo",
             description: producto.description ?? "Sin descripcion",
             price: producto.price ?? "Sin precio",
-            thumbnail: producto.thumbnail ?? "Sin thumbnail",
+            thumbnail: thumbnail ?? "Sin thumbnail",
             code: producto.code ?? "Sin code",
             stock: producto.stock ?? "Sin stock"
         }
@@ -34,14 +33,13 @@ class ProductManager {
 
         try {
             await fs.promises.writeFile(this.path, JSON.stringify(productos, null, "\t"));
-            return "Usuario Creado Correctamente";
+            return "Producto creado correctamente";
 
         } catch (e) {
-            return (`Error al crear el usario`, e);
+            return ("Error al crear el producto", e);
         }
     }
-
-    //aca leo mi productos o creo un array vacio
+ 
     async getProducts() {
         try {
             let respuesta = await fs.promises.readFile(this.path, "utf-8");
@@ -80,7 +78,7 @@ class ProductManager {
 
     }
     async updateProduct(id, producto) {
-        const productos = await this.getProducts(); // Usa this.getProducts() en lugar de this.GetAllUsers()
+        const productos = await this.getProducts();
 
         let productoUpdated = {};
 
@@ -98,7 +96,7 @@ class ProductManager {
         }
 
         const initLength = productos.length;
-       
+
         const productoProccesed = productos.filter(pr => pr.id != id);
 
         const finalLength = productoProccesed.length;
@@ -107,17 +105,15 @@ class ProductManager {
             if (initLength == finalLength) {
                 throw new Error(`Error: No se encontró ningún producto con el ID ${id}`);
             }
-            await fs.promises.writeFile(this.path, JSON.stringify(productos, null, "\t")); // Usa this.path en lugar de this.file
+            await fs.promises.writeFile(this.path, JSON.stringify(productos, null, "\t"));
 
             return productoUpdated;
+
         } catch (e) {
-          
-            
-              return  e.message
-            
+            return e.message;
+
         }
     }
-
 
 }
 
