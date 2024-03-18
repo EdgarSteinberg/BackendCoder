@@ -1,0 +1,31 @@
+* {
+    background-color: black;
+    color: white;
+
+}
+ul {
+  list-style: none;
+ }
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.products{
+    display: flex;
+    flex-direction: column;
+    border:1px solid white;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    width: 20%;
+}
+
+.delete{
+    background-color: red;
+    padding: 10px;
+}
