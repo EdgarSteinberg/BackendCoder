@@ -1,8 +1,8 @@
 const socket = io();
 
 socket.on('productoAgregado', (nuevoProducto) => {
-    console.log('Nuevo producto agregado:', nuevoProducto);
-    
+
+    console.log('Datos del nuevo producto:', nuevoProducto);
     // Obtener el contenedor de la lista de productos en el DOM
     const listaProductos = document.getElementById('listaProductos');
 
@@ -10,21 +10,23 @@ socket.on('productoAgregado', (nuevoProducto) => {
     const nuevoElementoProducto = document.createElement('div');
     nuevoElementoProducto.classList.add('products'); // Agregar la clase 'products' al nuevo elemento
     nuevoElementoProducto.id = nuevoProducto.id; // Establecer el ID del nuevo elemento como el ID del producto
+    console.log('ID del nuevo elemento:', nuevoElementoProducto.id); // Agregar un console.log para verificar el ID
 
     // Llenar el contenido del nuevo elemento con la información del producto
     nuevoElementoProducto.innerHTML = `
         <h2>${nuevoProducto.title}</h2>
         <p>Descripción: ${nuevoProducto.description}</p>
-        <p>Precio: ${nuevoProducto.price}</p>
+        <p>Precio: $ ${nuevoProducto.price}</p>
         <p>Código: ${nuevoProducto.code}</p>
         <img src="${nuevoProducto.thumbnail}" alt="Imagen del Producto">
         <br>
-        <button class="delete" data-productId="${nuevoProducto.id}" >Eliminar</button>
+        <button class="delete" data-productid="${nuevoProducto.id}" >Eliminar</button>
         
     `;
     // Adjuntar el nuevo elemento al contenedor listaProductos
     listaProductos.appendChild(nuevoElementoProducto);
 });
+
 
 //Agregar un event listener al formulario para enviar los datos del nuevo producto al servidor
 document.getElementById('formulario').addEventListener('submit', (event) => {
@@ -37,7 +39,7 @@ document.getElementById('formulario').addEventListener('submit', (event) => {
     const code = document.getElementById('code').value;
     const thumbnail = document.getElementById('thumbnail').value;
     const stock = document.getElementById('stock').value;
-
+ 
     // Crear un objeto con los datos del nuevo producto
     const nuevoProducto = {
         title: title,
@@ -50,8 +52,9 @@ document.getElementById('formulario').addEventListener('submit', (event) => {
 
     // Emitir el evento 'nuevoProducto' al servidor con los datos del nuevo producto
     socket.emit('nuevoProducto', nuevoProducto);
-});
 
+    document.getElementById('formulario').reset();
+});
 
 document.getElementById('listaProductos').addEventListener('click', (event) => {
     // Verificar si el elemento clickeado es un botón de eliminar
@@ -74,6 +77,7 @@ document.getElementById('listaProductos').addEventListener('click', (event) => {
         // Emitir el evento 'eliminarProducto' al servidor con el ID del producto a eliminar
         socket.emit('eliminarProducto', productId);
     }
+   
 });
 
 

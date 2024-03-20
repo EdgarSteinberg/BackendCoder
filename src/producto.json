@@ -1,11 +1,110 @@
 [
 	{
 		"id": 1,
-		"title": "e",
-		"description": "e",
-		"price": "e",
+		"title": "COCA-COLA",
+		"description": "ZERO",
+		"price": "2000",
 		"thumbnail": "Sin thumbnail",
-		"code": "e",
-		"stock": "1"
+		"code": "4XDS",
+		"stock": "12"
+	},
+	{
+		"id": 2,
+		"title": "FANTA",
+		"description": "FANTA-NARANJA",
+		"price": "1700",
+		"thumbnail": "Sin thumbnail",
+		"code": "1123",
+		"stock": "17"
+	},
+	{
+		"id": 3,
+		"title": "MANAOS",
+		"description": "UVA",
+		"price": "1500",
+		"thumbnail": "Sin thumbnail",
+		"code": "CE1",
+		"stock": "55"
+	},
+	{
+		"id": 4,
+		"title": "AGUA",
+		"description": "VILLAVICENCIO",
+		"price": "1500",
+		"thumbnail": "Sin thumbnail",
+		"code": "73",
+		"stock": "73"
+	},
+	{
+		"id": 5,
+		"title": "REDBULL",
+		"description": "CLASICO",
+		"price": "1000",
+		"thumbnail": "Sin thumbnail",
+		"code": "JDJC",
+		"stock": "4"
+	},
+	{
+		"id": 6,
+		"title": "AQUA",
+		"description": "NARANJA",
+		"price": "1700",
+		"thumbnail": "Sin thumbnail",
+		"code": "C5F",
+		"stock": "40"
+	},
+	{
+		"id": 7,
+		"title": "GATORADE",
+		"description": "MANZANA",
+		"price": "1400",
+		"thumbnail": "Sin thumbnail",
+		"code": "VSF",
+		"stock": "e"
+	},
+	{
+		"id": 8,
+		"title": "CEPITA",
+		"description": "MULTIFRUTA",
+		"price": "1400",
+		"thumbnail": "Sin thumbnail",
+		"code": "45C",
+		"stock": "12"
+	},
+	{
+		"id": 9,
+		"title": "SPRITE",
+		"description": "ZERO",
+		"price": "2000",
+		"thumbnail": "Sin thumbnail",
+		"code": "2D",
+		"stock": "12"
+	},
+	{
+		"id": 10,
+		"title": "CINDOR",
+		"description": "CHOCOLATADA",
+		"price": "2000",
+		"thumbnail": "Sin thumbnail",
+		"code": "1CE",
+		"stock": "20"
+	},
+	{
+		"id": 11,
+		"title": "MARITA",
+		"description": "MARITA",
+		"price": "111111",
+		"thumbnail": "Sin thumbnail",
+		"code": "11111",
+		"stock": "12"
+	},
+	{
+		"id": 12,
+		"title": "GATITO",
+		"description": "GATITO",
+		"price": "5F",
+		"thumbnail": "Sin thumbnail",
+		"code": "4F",
+		"stock": "7"
 	}
 ]

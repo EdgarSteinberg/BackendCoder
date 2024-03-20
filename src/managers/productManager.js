@@ -15,8 +15,9 @@ class ProductManager {
 
         return 1;
     }
-    //Recibimos el producto y creamos
-    async addProduct(producto,thumbnail) {
+ 
+    // Recibimos el producto y creamos
+    async addProduct(producto, thumbnail) {
         const productos = await this.getProducts();
 
         const product = {
@@ -27,19 +28,19 @@ class ProductManager {
             thumbnail: thumbnail ?? "Sin thumbnail",
             code: producto.code ?? "Sin code",
             stock: producto.stock ?? "Sin stock"
-        }
+        };
 
         productos.push(product);
 
         try {
             await fs.promises.writeFile(this.path, JSON.stringify(productos, null, "\t"));
-            return "Producto creado correctamente";
-
+            return { id: product.id, message: "Producto creado correctamente" };
         } catch (e) {
-            return ("Error al crear el producto", e);
+            return { id: undefined, message: "Error al crear el producto" };
         }
     }
- 
+
+
     async getProducts() {
         try {
             let respuesta = await fs.promises.readFile(this.path, "utf-8");
